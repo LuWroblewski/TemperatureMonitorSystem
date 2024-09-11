@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "src": "/api/temperature/getLatest",
+      "headers": {
+        "cache-control": "no-store"
+      }
+    }
+  ]
+}
