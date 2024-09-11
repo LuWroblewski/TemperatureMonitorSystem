@@ -21,7 +21,13 @@ export async function GET(req: NextRequest) {
         message: 'Successfully received the latest data.',
         data: latestData,
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          Expires: '0',
+        },
+      }
     );
   } catch (err) {
     console.error('Error occurred:', err);
