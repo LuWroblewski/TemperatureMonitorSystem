@@ -14,7 +14,9 @@ type DataResponse = {
 };
 
 export default async function Data() {
-  const response = await fetch(`http://localhost:3000/api/temperature/getLatest`, {
+  const url_api = process.env.URL_API;
+
+  const response = await fetch(`${url_api}/api/temperature/getLatest`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
