@@ -9,7 +9,7 @@ interface DataItem {
 
 export async function GET(req: NextRequest) {
   try {
-    const latestData = await pg('readings_temperature').select('*').orderBy('created_at', 'desc').first();
+    const latestData = await pg('readings_temperature').select('*').limit(1).orderBy('id', 'desc').first();
 
     if (!latestData) {
       return NextResponse.json({ status: 404, message: 'No data found.' }, { status: 404 });
