@@ -1,19 +1,20 @@
+import Link from 'next/link';
 import { FiHome, FiBarChart2 } from 'react-icons/fi';
 
 export default function Menu() {
   return (
     <ul className='menu bg-base-200 lg:menu-horizontal rounded-box'>
       <li>
-        <a>
+        <Link href='/'>
           <FiHome className='text-xl' />
           Medições
-        </a>
+        </Link>
       </li>
       <li>
-        <a>
+        <Link href='/charts'>
           <FiBarChart2 className='text-xl' />
           Gráficos
-        </a>
+        </Link>
       </li>
     </ul>
   );
