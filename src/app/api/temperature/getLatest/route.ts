@@ -6,7 +6,15 @@ export async function GET() {
     const latestData = await pg('readings_temperature').select('*').orderBy('created_at', 'desc').first();
 
     if (!latestData) {
-      return NextResponse.json({ status: 404, message: 'No data found.' }, { status: 404 });
+      return NextResponse.json(
+        { status: 404, message: 'No data found.' },
+        {
+          status: 404,
+          headers: {
+            'Cache-Control': 'no-store, max-age=0',
+          },
+        }
+      );
     }
 
     return NextResponse.json(
@@ -15,11 +23,24 @@ export async function GET() {
         message: 'Successfully received the latest data.',
         data: latestData,
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          'Cache-Control': 'no-store, max-age=0',
+        },
+      }
     );
   } catch (err) {
     console.error('Error occurred:', err);
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    return NextResponse.json({ status: 500, message: 'Failed to load data', error: errorMessage }, { status: 500 });
+    return NextResponse.json(
+      { status: 500, message: 'Failed to load data', error: errorMessage },
+      {
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-store, max-age=0',
+        },
+      }
+    );
   }
 }
