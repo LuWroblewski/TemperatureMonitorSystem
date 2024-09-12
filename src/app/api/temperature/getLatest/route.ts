@@ -11,7 +11,8 @@ export async function GET() {
         {
           status: 404,
           headers: {
-            'Cache-Control': 'no-store, max-age=0',
+            'Cache-Control': 'no-store',
+            'x-vercel-cache': 'MISS',
           },
         }
       );
@@ -26,7 +27,8 @@ export async function GET() {
       {
         status: 200,
         headers: {
-          'Cache-Control': 'no-store, max-age=0',
+          'Cache-Control': 'no-store',
+          'x-vercel-cache': 'MISS',
         },
       }
     );
@@ -38,7 +40,8 @@ export async function GET() {
       {
         status: 500,
         headers: {
-          'Cache-Control': 'no-store, max-age=0',
+          'Cache-Control': 'no-store',
+          'x-vercel-cache': 'MISS',
         },
       }
     );
