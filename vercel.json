@@ -3,7 +3,7 @@
     {
       "src": "/api/temperature/getLatest",
       "headers": {
-        "cache-control": "no-store"
+        "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate"
       }
     }
   ]
