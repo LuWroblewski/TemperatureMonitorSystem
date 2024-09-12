@@ -2,11 +2,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import pg from '../../connection';
 
-interface DataItem {
-  temperature: number;
-  humidity: number;
-}
-
 export async function GET(req: NextRequest) {
   try {
     const latestData = await pg('readings_temperature').select('*').limit(1).orderBy('id', 'desc').first();
