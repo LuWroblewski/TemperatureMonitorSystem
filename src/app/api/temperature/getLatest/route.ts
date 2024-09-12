@@ -10,10 +10,6 @@ export async function GET() {
         { status: 404, message: 'No data found.' },
         {
           status: 404,
-          headers: {
-            'Cache-Control': 'no-store, max-age=0, must-revalidate',
-            'x-vercel-cache': 'MISS',
-          },
         }
       );
     }
@@ -26,10 +22,6 @@ export async function GET() {
       },
       {
         status: 200,
-        headers: {
-          'Cache-Control': 'no-store, max-age=0, must-revalidate',
-          'x-vercel-cache': 'MISS',
-        },
       }
     );
   } catch (err) {
@@ -39,10 +31,6 @@ export async function GET() {
       { status: 500, message: 'Failed to load data', error: errorMessage },
       {
         status: 500,
-        headers: {
-          'Cache-Control': 'no-store, max-age=0',
-          'x-vercel-cache': 'MISS',
-        },
       }
     );
   }
