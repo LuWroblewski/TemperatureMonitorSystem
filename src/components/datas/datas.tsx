@@ -21,7 +21,7 @@ export default async function Data() {
     headers: {
       'content-type': 'application/json',
     },
-    cache: 'no-store',
+    cache: 'no-cache',
   });
 
   const data: DataResponse = await response.json();
