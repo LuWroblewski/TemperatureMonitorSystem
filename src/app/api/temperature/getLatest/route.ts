@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import pg from '../connection';
+import pg from '../../connection';
 
 export async function GET(req: NextRequest) {
   try {
