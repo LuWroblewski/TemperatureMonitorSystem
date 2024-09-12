@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import pg from '../../connection';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const latestData = await pg('readings_temperature').select('*').orderBy('created_at', 'desc').first();
