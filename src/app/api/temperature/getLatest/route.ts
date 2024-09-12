@@ -3,7 +3,7 @@ import pg from '../../connection';
 
 export async function GET() {
   try {
-    const latestData = await pg('readings_temperature').select('*').limit(1).orderBy('created_at', 'desc');
+    const latestData = await pg('readings_temperature').select('*').orderBy('created_at', 'desc').first();
 
     if (!latestData) {
       return NextResponse.json(
