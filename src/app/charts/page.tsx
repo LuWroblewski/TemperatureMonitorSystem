@@ -1,11 +1,13 @@
-import { FiAlertTriangle } from 'react-icons/fi';
+import BoxplotChart from '@/components/charts/boxplotchart/boxplotchart';
+import LineWithConfortLine from '@/components/charts/lineWithConfortLine/lineWithConfortLine';
 
 export default function Home() {
   return (
-    <main className='flex mt-64 items-center justify-center text-2xl space-x-2 '>
-      <FiAlertTriangle />
-
-      <p> Em desenvolvimento.</p>
+    <main className='px-4'>
+      <div className='bg-base-200 p-2'>
+        <LineWithConfortLine />
+        <BoxplotChart />
+      </div>
     </main>
   );
 }
