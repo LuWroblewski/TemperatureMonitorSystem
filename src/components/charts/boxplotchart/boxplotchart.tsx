@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Chart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import Loading from '@/components/loading/loading';
+
+import dynamic from 'next/dynamic';
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false }); 
+
 
 export default function BoxplotChart() {
   const [chartData, setChartData] = useState<any>({
