@@ -28,16 +28,24 @@ export default async function Data() {
   const data_json: Data = data.data;
 
   return (
-    <ul className=' bg-base-200 p-10 rounded-box text-2xl space-y-2'>
-      <li className='flex justify-center items-center space-x-2 hover:bg-neutral p-2 rounded-box'>
-        <FiThermometer className='text-xl' />
-        <p>Temperatura: {data_json.temperature}</p>
-      </li>
-
-      <li className='flex justify-center items-center space-x-2 hover:bg-neutral p-2 rounded-box'>
-        <FiCloudDrizzle className='text-xl' />
-        <p>Umidade: {data_json.humidity}%</p>
-      </li>
-    </ul>
+    <div className='flex w-full flex-col lg:flex-row px-16'>
+      <div className='card bg-base-300 rounded-box grid h-32 flex-grow place-items-center'>
+        <div className=' justify-center items-center space-x-2 hover:bg-neutral p-2 rounded-box'>
+          <p className='flex text-3xl'>
+            <FiThermometer className='mr-4' /> Temperatura
+          </p>
+          <p className='justify-center items-center text-center mt-4 text-xl'>{data_json.temperature} ° </p>
+        </div>
+      </div>
+      <div className='divider lg:divider-horizontal'></div>
+      <div className='card bg-base-300 rounded-box grid h-32 flex-grow place-items-center'>
+        <div className=' justify-center items-center space-x-2 hover:bg-neutral p-2 rounded-box'>
+          <p className='flex text-3xl'>
+            <FiCloudDrizzle className='mr-4' /> Umidade
+          </p>
+          <p className='justify-center items-center text-center mt-4 text-xl'>{data_json.humidity} % </p>
+        </div>
+      </div>
+    </div>
   );
 }
