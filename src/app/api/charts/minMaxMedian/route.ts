@@ -7,19 +7,6 @@ function calculateMedian(values: number[]) {
   return values.length % 2 !== 0 ? values[mid] : (values[mid - 1] + values[mid]) / 2;
 }
 
-function calculateQuartiles(values: number[]) {
-  values.sort((a, b) => a - b);
-  const mid = Math.floor(values.length / 2);
-
-  const lowerHalf = values.slice(0, mid);
-  const upperHalf = values.length % 2 === 0 ? values.slice(mid) : values.slice(mid + 1);
-
-  const q1 = calculateMedian(lowerHalf);
-  const q3 = calculateMedian(upperHalf);
-
-  return { q1, q3 };
-}
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const startDate = searchParams.get('startDate');
@@ -41,14 +28,12 @@ export async function GET(req: NextRequest) {
       min: Math.min(...temperatures),
       max: Math.max(...temperatures),
       median: calculateMedian(temperatures),
-      ...calculateQuartiles(temperatures),
     };
 
     const humidityStats = {
       min: Math.min(...humidities),
       max: Math.max(...humidities),
       median: calculateMedian(humidities),
-      ...calculateQuartiles(humidities),
     };
 
     return NextResponse.json(

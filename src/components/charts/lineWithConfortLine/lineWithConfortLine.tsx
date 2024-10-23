@@ -88,5 +88,13 @@ export default function LineWithConfortLine() {
     return <Loading />;
   }
 
-  return <Chart options={options} series={chartData.series} type='line' height={350} />;
+  return (
+    <div>
+      <div className='ml-10 mt-4 text-lg font-bold '>
+        <p>Gráfico faixa ideal</p>
+        <p className=' text-xs ml-4'>Gráfico da faixa ideal da temperatura e da umidade</p>
+      </div>
+      <Chart options={options} series={chartData.series} type='line' height={350} />
+    </div>
+  );
 }
